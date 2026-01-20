@@ -18,6 +18,31 @@ Responsive and user-friendly UI for smooth browsing and checkout
 
 ## 2. Screenshots
 
+### Home Page
+![Home Page](Screenshots/Home.png)
+
+### Product Listing
+![Product Listing](Screenshots/ProductsPage.png)
+
+### Prodcut Details
+![Product Details](Screenshots/ProductsDetail.png)
+
+### Shopping Cart
+![Shopping Cart](Screenshots/AddToCart.png)
+
+### Wishilist Page
+![Wishlist Page](Screenshots/Wishlist.png)
+
+### Checkout Page
+![Checkout](screenshots/Checkout.png)
+
+### Order History Page
+![Order History Page](Screenshots/OrderHistory.png)
+
+### Invoice 
+![Invoice](Screenshots/Invoice.png)
+
+
 ## 3. Technology Stack
 
 Backend: Python, Django
@@ -40,12 +65,12 @@ Ensured data integrity and scalability
 
 Clone the repository
 
-git clone https://github.com/your-username/shop-sphere.git
+git clone https://github.com/Jiya2406/ShopSphere.git
 
 
 Navigate to the project directory
 
-cd shop-sphere
+cd pro
 
 
 Create a virtual environment
