@@ -1,0 +1,105 @@
+{% extends "navbar.html" %}
+{% block content %}
+    {% if outofstock %}
+      <script>
+        alert('{{outofstock}}')
+      </script>
+    {% endif %}
+    
+
+    <!--====================== Cart Section ======================-->
+    <div class="container mt-5">
+      <h1 class="mb-4">Your Shopping Cart</h1>
+      <div class="row">
+        <div class="col-md-8">
+          <table class="table">
+            {% if cart_data %}
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th class="align-bottom pb-2">
+                 <a href={% url "removeall" %}> <button class="btn btn-outline-danger">Remove All</button></a>
+                </th>
+              </tr>
+            </thead>
+            {% else %}
+            <p>There is no product in your cart </p>
+            {% endif %}
+            <tbody>
+              {% for i in cart_data %}
+              <tr class="align-content-center">
+                <td>
+                  <img src={{i.pro.image.url}} alt="" height="200px" width="200px" />
+                </td>
+                <td>₹{{i.pro.price}}</td>
+                <td>
+                  <a href={% url "add_qty" i.id %}>
+                  <button class="increase items-count btn mr-1" type="button">
+                    <i class="fa fa-plus text-dark"></i></button>
+                  </a>
+                    <button class="border-0 btn">{{i.qty}}</button>
+                  
+                  <a href={% url "minus_qty" i.id %}>
+                    <button class="increase items-count btn" type="button">
+                    <i class="fa fa-minus text-dark"></i>
+                  </button>
+                  </a>
+
+                </td>
+                <td>₹{{i.total_amount}}</td>
+                <td class="align-bottom pb-3">
+                  <a href="{% url "remove" i.id %}">
+                  <button class="btn btn-outline-danger">Remove</button>
+                  </a>
+                </td>
+              </tr>
+        {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-3 ml-auto mt-0 pt-0">
+          <!-- <div class="card border-0">
+            <a href="" class="ml-auto"
+              ><i class="fa-solid fa-xmark-circle text-dark"></i
+            ></a>
+            <hr />
+            <img
+              class="card-img"
+              src="Img/3671942.jpg"
+              alt=""
+              height="200px"
+              width="200px"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Name</h5>
+              <p>
+                Description : Lorem ipsum dolor sit amet consectetur
+                adipisicing.
+              </p>
+              <p>Price : ₹55</p>
+              <p>Quantity: 2</p>
+              <hr />
+              <p><b>Total: </b>₹55.00</p>
+            </div>
+          </div> -->
+          {% if cart_data %}
+          <div class="card p-2">
+            <div class="card-body">
+              <h5 class="card-title">Summary</h5>
+              <hr />
+              <p><strong>Total: </strong>₹{{total}}</p>
+              <a href="/checkout/">
+              <button class="btn btn-outline-success btn-block">
+                Checkout
+              </button>
+            </a>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+{% endblock content %}

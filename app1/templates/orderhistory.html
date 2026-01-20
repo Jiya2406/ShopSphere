@@ -1,0 +1,41 @@
+{% extends "navbar.html" %}
+{% block content %}
+  <div class="container mt-5">
+      <h1 class="mb-4">Your Orders</h1>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table">
+
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Order Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for o in orders %}
+              <tr class="align-content-center">
+                {% for item in o.prods.all %}
+                <td>{{item.pro.name}}</td>
+                <td>{{ item.qty }}</td>
+
+                <td>₹{{o.total_amount}}</td>
+                <td>
+                  <a href="/single_invoice?id={{o.id}}">
+                  <button class="increase items-count btn mr-1" type="button">
+                    <i class="fa fa-eye"></i></button>
+                  </a>
+                </td>
+              </tr>
+              {% endfor %}
+            {% endfor %}
+
+            </tbody>
+          </table>
+        </div>
+        </div>
+        </div>
+{% endblock content %}

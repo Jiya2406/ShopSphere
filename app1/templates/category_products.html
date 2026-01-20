@@ -1,0 +1,22 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<div class="container my-4">
+  <h3 class="mb-4">Products in {{ category.name }}</h3>
+  <div class="row">
+    {% for p in products %}
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img src="{{ p.image.url }}" class="card-img-top" height="250" />
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ p.name }}</h5>
+            <p class="card-text">₹{{ p.price }}</p>
+            <a href="{% url 'product_detail' p.id %}" class="btn btn-primary btn-sm">View Product</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12"><p>No products found in this category.</p></div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

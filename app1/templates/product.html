@@ -1,0 +1,43 @@
+{% extends "navbar.html" %}
+{% block content %}
+<div class="container my-5">
+  <div class="row mt-4">
+    <!-- Product Image -->
+    <div class="col-lg-5 col-md-6 col-sm-12">
+      <img src="{{ product.image.url }}" alt="Product Image" class="img-fluid rounded shadow-sm" style="height:400px; object-fit:cover; width:100%;" />
+    </div>
+
+    <!-- Product Info and Actions -->
+    <div class="col-lg-6 col-md-6 col-sm-12 mt-5">
+      <h2 class="mb-3">{{ product.name }}</h2>
+      <p class="text-muted">{{ product.description }}</p>
+      <p><strong>Price:</strong> ₹{{ product.price }}</p>
+
+      <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label for="qty"><strong>Quantity:</strong></label>
+          <input type="number" id="qty" name="qty" class="form-control w-50" min="1" max="{{ product.stock }}" value="1" required />
+        </div>
+
+        <div class="my-3">
+          <i class="fa-solid fa-star text-warning"></i>
+          <i class="fa-solid fa-star text-warning"></i>
+          <i class="fa-solid fa-star text-warning"></i>
+          <i class="fa-regular fa-star-half-stroke text-warning"></i>
+          <i class="fa-regular fa-star text-warning"></i>
+        </div>
+
+        <input type="hidden" name="product_id" value="{{ product.id }}">
+
+        <div class="btn-group mt-3">
+          <button class="btn btn-success" name="buy" type="submit">Buy Now</button>
+          <button class="btn btn-primary" name="cart" type="submit">Add to Cart</button>
+          <button class="btn btn-warning" name="wish" type="submit">Add to Wishlist</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock content %}

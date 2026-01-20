@@ -1,0 +1,43 @@
+/* Removed global h4 color styling to allow proper checkout form colors */
+
+/* Checkout form headings should be black */
+.checkout-form h4,
+.checkout-form h2 {
+    color: #000 !important;
+}
+
+/* Minor UI polish */
+.navbar-brand span{
+    letter-spacing: 0.5px;
+}
+
+.card{
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 0.25rem 1rem rgba(0,0,0,.08);
+}
+
+footer a{ color:#ddd; }
+footer a:hover{ color:#fff; text-decoration: none; }
+
+.btn{ border-width: 2px; }
+
+/* Keep nav items on one line (e.g., Contact Us, Order History) */
+.navbar-nav .nav-item .nav-link{ white-space: nowrap; }
+
+/* Slightly reduce search bar width so right-side items fit */
+.search-form{ max-width: 520px; }
+.search-form .form-control{ min-width: 360px; }
+
+/* On medium screens, reduce further */
+@media (max-width: 1200px){
+  .search-form{ max-width: 460px; }
+  .search-form .form-control{ min-width: 300px; }
+}
+
+@media (max-width: 992px){
+  .search-form{ max-width: 380px; }
+  .search-form .form-control{ min-width: 240px; }
+}

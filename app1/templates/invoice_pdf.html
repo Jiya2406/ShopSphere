@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Invoice - {{ order.transaction_id }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .invoice-info {
+            margin-bottom: 30px;
+        }
+        .customer-info {
+            margin-bottom: 30px;
+        }
+        .products-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        .products-table th,
+        .products-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .products-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        .total {
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>INVOICE</h1>
+        <p>ShopSphere</p>
+    </div>
+    
+    <div class="invoice-info">
+        <h3>Invoice Details</h3>
+        <p><strong>Invoice Number:</strong> {{ order.transaction_id }}</p>
+        <p><strong>Date:</strong> {{ order.date_time|date:"F d, Y" }}</p>
+        <p><strong>Time:</strong> {{ order.date_time|time:"H:i" }}</p>
+    </div>
+    
+    <div class="customer-info">
+        <h3>Customer Information</h3>
+        <p><strong>Name:</strong> {{ order.user.name }}</p>
+        <p><strong>Email:</strong> {{ order.user.email }}</p>
+        <p><strong>Mobile:</strong> {{ order.mob }}</p>
+        <p><strong>Address:</strong> {{ order.add }}</p>
+        <p><strong>City:</strong> {{ order.city }}, <strong>State:</strong> {{ order.state }}</p>
+        <p><strong>PIN Code:</strong> {{ order.pin_code }}</p>
+    </div>
+    
+    <div class="products">
+        <h3>Products Ordered</h3>
+        <table class="products-table">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price per Unit</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in order.prods.all %}
+                <tr>
+                    <td>{{ item.pro.name }}</td>
+                    <td>{{ item.qty }}</td>
+                    <td>Rs. {{ item.pro.price }}</td>
+                    <td>Rs. {{ item.total_amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="total">
+        <h3>Total Amount: Rs. {{ order.total_amount }}</h3>
+    </div>
+    
+    <div class="footer">
+        <p>Thank you for your purchase!</p>
+        <p>For any queries, please contact our customer support.</p>
+        <p>This is a computer generated invoice.</p>
+    </div>
+</body>
+</html>

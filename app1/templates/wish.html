@@ -1,0 +1,46 @@
+{% extends "navbar.html" %}
+{% block content %}
+   
+
+    <!--====================== Cart Section ======================-->
+    <div class="container mt-5">
+      <h1 class="mb-4">Your Shopping Wishlist</h1>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                
+                <th class="align-bottom pb-2">
+                 <a href="{% url 'remove_all_wishlist' %}" class="btn btn-outline-danger">Remove All</a>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in wishlist %}
+              <tr class="align-content-center">
+                <td>
+                  <img src="{{i.pro.image.url}}" alt="" height="200px" width="200px" />
+                  <p>{{i.pro.name}}</p>
+                </td>
+                <td>₹{{i.pro.price}}</td>
+                
+                <td class="align-bottom pb-3">
+                  {% comment %} <button class="btn btn-outline-danger">Remove</button> {% endcomment %}
+                  <a href="{% url 'remove_wishlist' i.pro.id %}" class="btn btn-outline-danger">Remove</a>
+                  <a href="{% url "product_detail" i.pro.id %}"><button class="btn btn-outline-danger">Buy Now</button></a>
+
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% comment %} <div class="text-right mb-3">
+          <a href="{% url 'wishlist_checkout' %}" class="btn btn-outline-success">Checkout</a>
+        </div> {% endcomment %}
+      </div>
+    </div>
+{% endblock content %}
