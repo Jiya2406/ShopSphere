@@ -61,53 +61,37 @@ Managed relationships between users, products, carts, and orders
 
 Ensured data integrity and scalability
 
-## 5. Installation and Setup
+## 5.Installation and Setup
 
-Clone the repository
+1. Clone the repository  
+   git clone https://github.com/Jiya2406/ShopSphere.git
 
-git clone https://github.com/Jiya2406/ShopSphere.git
+2. Navigate to the project directory  
+   cd pro
 
+3. Create a virtual environment  
+   python -m venv venv
 
-Navigate to the project directory
+4. Activate the virtual environment  
+   - Windows  
+     venv\Scripts\activate  
+   - Linux / macOS  
+     source venv/bin/activate
 
-cd pro
+5. Install required dependencies  
+   pip install -r requirements.txt
 
+6. Apply database migrations  
+   python manage.py migrate
 
-Create a virtual environment
+7. Create a superuser (optional, for admin access)  
+   python manage.py createsuperuser
 
-python -m venv venv
+8. Run the development server  
+   python manage.py runserver
 
-
-Activate the virtual environment
-
-Windows
-
-venv\Scripts\activate
-
-
-Linux / macOS
-
-source venv/bin/activate
-
-
-Install dependencies
-
-pip install -r requirements.txt
-
-
-Apply migrations
-
-python manage.py migrate
-
-
-Run the development server
-
-python manage.py runserver
-
-
-Open the application in the browser
-
-http://127.0.0.1:8000/
+9. Open the application in the browser  
+   http://127.0.0.1:8000/
 
 ## 6. Folder Structure
 
