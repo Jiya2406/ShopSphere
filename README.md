@@ -25,7 +25,7 @@ Responsive and user-friendly UI for smooth browsing and checkout
 ![Product Listing](Screenshots/ProductsPage.png)
 
 ### Prodcut Details
-![Product Details](Screenshots/ProductsDetail.png)
+![Product Details](Screenshots/ProductDetail.png)
 
 ### Shopping Cart
 ![Shopping Cart](Screenshots/AddToCart.png)
@@ -34,7 +34,7 @@ Responsive and user-friendly UI for smooth browsing and checkout
 ![Wishlist Page](Screenshots/Wishlist.png)
 
 ### Checkout Page
-![Checkout](screenshots/Checkout.png)
+![Checkout](Screenshots/Checkout.png)
 
 ### Order History Page
 ![Order History Page](Screenshots/OrderHistory.png)
